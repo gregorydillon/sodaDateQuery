@@ -50,7 +50,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Fort Worth Certificate of Occupancy Query</a>
+          <a class="navbar-brand" href="#">San Francisco SF311 Data Query</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -61,24 +61,29 @@
     </nav>
     <div class="container-fluid">
     <h3>Choose a date range using the slider, then click submit</h3>
-    <p>This widget takes the date range selected on the slider, and builds a date range SoQL query on Fort Worth's Certificate of Occupancy Dataset.  The results are displayed in a table, and a CSV download button is provided.</p>
+    <p>This widget takes the date range selected on the slider, and builds a date range SoQL query on SF311 Dataset.  The results are displayed in a table, and a CSV download button is provided.</p>
 	<div id = "slider"></div><br/>
 	<button type = 'button' id = "submitButton" class = 'btn btn-primary'>Submit</button>
   <button type = 'button' id = "downloadButton" class = 'btn btn-primary'>Download CSV</button>
   <div class = 'tableContainer'>
 	<table id = "my-final-table" class="table table-bordered">
     <thead>
-    <th>b1_alt_id</th>
-    <th>recordAlias</th>
-    <th>appltype</th>
-    <th>applsubtype</th>
-    <th>currstatus</th>
-    <th>projectname</th>
-    <th>codate</th>
-    <th>applname</th>
-    <th>appladdr1</th>
-    <th>applcity</th>
-    <th>applzip</th>
+    <th>point</th>
+    <th>category</th>
+    <th>request_details</th>
+    <th>source</th>
+    <th>address</th>
+    <th>request_type</th>
+    <th>status</th>
+    <th>updated</th>
+    <th>media_url</th>
+    <th>neighborhood</th>
+    <th>case_id</th>
+    <th>supervisor_district</th>
+    <th>responsible_agency</th>
+    <th>opened</th>
+    
+    
   </thead>
   <tbody>
   </tbody> 
@@ -95,9 +100,9 @@
 //hard-coded date range from our dataset
 var dateMax = new Date();
 
-var dateMin = new Date(2000, 4, 20);
+var dateMin = new Date(2014, 4, 20);
 
-var baseURL = 'https://data.fortworthtexas.gov/resource/i85s-46fv';
+var baseURL = 'https://data.sfgov.org/resource/jbdb-9hnx';
 
 $("#slider").dateRangeSlider({
     bounds: {
@@ -105,7 +110,7 @@ $("#slider").dateRangeSlider({
         max: dateMax
     },
     defaultValues: {
-        min: new Date(2014, 0, 1),
+        min: new Date(2015, 0, 1),
         max: dateMax
     }
 });
@@ -126,8 +131,8 @@ $('#submitButton').on('click', function() {
 
 
 
-    var apiCall = baseURL + '.json?$where=codate>\'' + inputMin +
-        '\' AND codate<\'' + inputMax + '\'';
+    var apiCall = baseURL + '.json?$where=opened>\'' + inputMin +
+        '\' AND opened<\'' + inputMax + '\'';
 
     console.log(apiCall);
 
@@ -147,8 +152,8 @@ $('#submitButton').on('click', function() {
 
 
     $('#downloadButton').on('click', function(e) {
-        var csvURL = baseURL + '.csv?$where=codate>\'' +
-            inputMin + '\' AND codate<\'' + inputMax + '\'';
+        var csvURL = baseURL + '.csv?$where=opened>\'' +
+            inputMin + '\' AND opened<\'' + inputMax + '\'';
 
         e.preventDefault(); //stop the browser from following
         window.location.href = csvURL;
