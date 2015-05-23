@@ -2,6 +2,9 @@ Creates a table from Socrata type endpoint
 And demonstrates a date slider
 ----
 
+The code is now within script '' on  the index.html page
+
+
 
 There should be an attribution for the basic setup
 
