@@ -1,9 +1,16 @@
+Creates a table from Socrata type endpoint
+And demonstrates a date slider
+----
+
+
 There should be an attribution for the basic setup
 
 https://github.com/chriswhong/sodaDateQuery.git 
 
-I didn't extend the code in anyway, so there is no intention to request a pull
-Rather my purpose is to learn how to civic involvement, and  read his code, and make changes to it to 
+I didn't extend the code in anyway, that not me.   Yet
+so there is no intention to request a pull
+Rather my purpose is to learn how read his code, understand it enough to know how to ake changes to it,
+to civic involvement,
 serve my purpose.   That is mostly accompled 
 1)
 I changed the URL from a Socrata Ft Worth Texas endpoint, to one here in San Francisco
